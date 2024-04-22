@@ -50,13 +50,18 @@ public class MapsFragment extends Fragment {
         vm = new ViewModelProvider(this).get(MapsFragmentViewModel.class);
         binding = FragmentMapsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        vm.getMMapaActual().observe(getViewLifecycleOwner(), new Observer<MapsFragmentViewModel.MapaActual>() {
+            @Override
+            public void onChanged(MapsFragmentViewModel.MapaActual mapaActual) {
+                SupportMapFragment smf = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapa);
+                smf.getMapAsync(mapaActual);
+            }
+        });
         vm.getMLocation().observe(getViewLifecycleOwner(), new Observer<Location>() {
             @Override
             public void onChanged(Location location) {
-                LatLng farmacia1 = new LatLng(location.getLatitude(), location.getLongitude());
-                map.addMarker(new MarkerOptions().position(miUbi).title("Marcador de mi casa"));
-                Log.d("salida", map.toString());
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(miUbi, 15));
+                vm.miUbicacion = new LatLng(location.getLatitude(), location.getLongitude());
+                vm.obtenerMapa();
             }
         });
         vm.obtenerUltimaUbicacion();
@@ -70,5 +75,11 @@ public class MapsFragment extends Fragment {
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

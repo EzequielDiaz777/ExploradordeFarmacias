@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.ezediaz.exploradordefarmacias.ui.home.HomeFragment"
-        android:label="Explorador de farmacias"
+        android:label="Lista de farmacias"
         tools:layout="@layout/fragment_home" />
 
     <fragment

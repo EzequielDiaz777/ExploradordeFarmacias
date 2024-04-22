@@ -135,6 +135,4 @@ public class MapsFragmentViewModel extends AndroidViewModel {
             googleMap.animateCamera(update);
         }
     }
-
-}
 }

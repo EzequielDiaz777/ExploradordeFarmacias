@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Explorador de farmacias" />
+            android:title="Lista de farmacias" />
         <item
             android:id="@+id/nav_maps"
             android:icon="@drawable/ic_menu_gallery"
