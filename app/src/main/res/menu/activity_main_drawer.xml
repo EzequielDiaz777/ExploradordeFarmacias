@@ -7,14 +7,18 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:title="Explorador de farmacias" />
+        <item
+            android:id="@+id/nav_maps"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Mapa" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="Configuración" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="Salir" />
     </group>
 </menu>
