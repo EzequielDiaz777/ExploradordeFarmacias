@@ -1,85 +1,86 @@
 package com.ezediaz.exploradordefarmacias.ui.mapa;
 
-import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.ezediaz.exploradordefarmacias.R;
 import com.ezediaz.exploradordefarmacias.databinding.FragmentMapsBinding;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment {
     private MapsFragmentViewModel vm;
     private FragmentMapsBinding binding;
-    private GoogleMap map;
+
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            map = googleMap;
+            // Esta parte está comentada, puedes modificarla según tus necesidades
+            // Agrega un marcador en Sydney, Australia (esto es solo un ejemplo)
             /*LatLng sydney = new LatLng(-34, 151);
             googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
         }
     };
 
+    // Método para crear la vista del fragmento
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        // Inicializa el ViewModel
         vm = new ViewModelProvider(this).get(MapsFragmentViewModel.class);
+
+        // Inicializa el binding de la vista
         binding = FragmentMapsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        vm.getMMapaActual().observe(getViewLifecycleOwner(), new Observer<MapsFragmentViewModel.MapaActual>() {
-            @Override
-            public void onChanged(MapsFragmentViewModel.MapaActual mapaActual) {
-                SupportMapFragment smf = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapa);
+
+        // Muestra un Toast indicando que se ha ejecutado el método
+        Toast.makeText(getContext(), "onCreateView de MapsFragment ejecutado", Toast.LENGTH_SHORT).show();
+
+        // Observa el estado del mapa actual y configura el mapa cuando está listo
+        vm.getMMapaActual().observe(getViewLifecycleOwner(), mapaActual -> {
+            SupportMapFragment smf = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapa);
+            if (smf != null) {
                 smf.getMapAsync(mapaActual);
             }
         });
-        vm.getMLocation().observe(getViewLifecycleOwner(), new Observer<Location>() {
-            @Override
-            public void onChanged(Location location) {
-                vm.miUbicacion = new LatLng(location.getLatitude(), location.getLongitude());
-                vm.obtenerMapa();
-            }
+
+        // Observa los cambios de ubicación y actualiza la ubicación en el ViewModel
+        vm.getMLocation().observe(getViewLifecycleOwner(), location -> {
+            vm.miUbicacion = new LatLng(location.getLatitude(), location.getLongitude());
+            vm.obtenerMapa(); // Actualiza el mapa con la nueva ubicación
         });
-        vm.obtenerUltimaUbicacion();
+
+        vm.lecturaPermanente();
         return root;
     }
 
+    // Método llamado cuando la vista está completamente creada
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // Obtiene el fragmento de mapa y asigna el callback
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapa);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
     }
 
+    // Método llamado cuando se destruye la vista del fragmento
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        // Limpia el binding y el ViewModel
         binding = null;
+        vm.pararLecturaPermanente();
     }
 }

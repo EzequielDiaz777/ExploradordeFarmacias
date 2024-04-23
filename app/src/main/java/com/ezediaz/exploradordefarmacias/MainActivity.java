@@ -21,7 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ezediaz.exploradordefarmacias.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
-
+    public static String idioma ="";
+    public static String tipoMapa = "";
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
