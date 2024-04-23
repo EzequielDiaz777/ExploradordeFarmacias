@@ -36,9 +36,11 @@ public class FarmaciaAdapter extends RecyclerView.Adapter<FarmaciaAdapter.ViewHo
     }
 
     public void onBindViewHolder(@NonNull ViewHolderPepe holder, int position){
+        String t = "";
         Farmacia farmacia = listaDeFarmacias.get(position);
         holder.nombre.setText(farmacia.getNombre());
-        holder.direccion.setText(farmacia.getDireccion());
+        t = holder.direccion.getText().toString() + " " + farmacia.getDireccion();
+        holder.direccion.setText(t);
         holder.foto.setImageResource(farmacia.getFoto());
         holder.btnVerMas.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -44,7 +43,7 @@ public class MapaFragment extends Fragment {
             SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapa);
             if (mapFragment != null) {
                 mapFragment.getMapAsync(mapaActual);
-                viewModelMA.getMapType().observe(getViewLifecycleOwner(), new Observer<String>() {
+                viewModelMA.getTipoDeMapa().observe(getViewLifecycleOwner(), new Observer<String>() {
                     @Override
                     public void onChanged(String mapType) {
                         viewModelMapa.obtenerTipoDeMapa(mapType);

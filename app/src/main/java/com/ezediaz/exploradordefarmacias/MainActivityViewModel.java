@@ -8,28 +8,28 @@ import androidx.lifecycle.MutableLiveData;
 
 public class MainActivityViewModel extends AndroidViewModel {
     // Propiedades observables para tipo de mapa y idioma
-    private final MutableLiveData<String> mapType = new MutableLiveData<>();
-    private final MutableLiveData<String> language = new MutableLiveData<>();
+    private final MutableLiveData<String> mTipoDeMapa = new MutableLiveData<>("normal");
+    private static final MutableLiveData<String> mIdioma = new MutableLiveData<>("es");
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
     }
 
     // Métodos para obtener y establecer el tipo de mapa
-    public LiveData<String> getMapType() {
-        return mapType;
+    public LiveData<String> getTipoDeMapa() {
+        return mTipoDeMapa;
     }
 
-    public void setMapType(String type) {
-        mapType.setValue(type);
+    public void setTipoDeMapa(String tipoDeMapa) {
+        mTipoDeMapa.setValue(tipoDeMapa);
     }
 
     // Métodos para obtener y establecer el idioma
-    public LiveData<String> getLanguage() {
-        return language;
+    public LiveData<String> getMIdioma() {
+        return mIdioma;
     }
 
-    public void setLanguage(String lang) {
-        language.setValue(lang);
+    public void setMIdioma(String idioma) {
+        mIdioma.setValue(idioma);
     }
 }

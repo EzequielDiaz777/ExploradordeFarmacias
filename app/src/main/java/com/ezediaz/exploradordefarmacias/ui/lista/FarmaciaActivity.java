@@ -23,11 +23,13 @@ public class FarmaciaActivity extends AppCompatActivity {
         mv.getMutableFarmacia().observe(this, new Observer<Farmacia>(){
             @Override
             public void onChanged(Farmacia farmacia) {
-                Log.d("salida", "Estoy en onChanged");
+                String t = "";
                 binding.tvNombre.setText(farmacia.getNombre());
                 binding.ivFoto.setImageResource(farmacia.getFoto());
-                binding.tvDireccion.setText("Dirección de la farmacia: " + farmacia.getDireccion());
-                binding.tvHorario.setText("Horario de atención: " + farmacia.getHorario());
+                t = binding.tvDireccion.getText().toString() + " " + farmacia.getDireccion();
+                binding.tvDireccion.setText(t);
+                t = binding.tvHorario.getText().toString() + " " + farmacia.getHorario();
+                binding.tvHorario.setText(t);
                 binding.btnVolver.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

@@ -3,8 +3,6 @@ package com.ezediaz.exploradordefarmacias.ui.configuracion;
 import android.os.Bundle;
 import android.content.res.Configuration;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -28,12 +26,12 @@ public class ConfiguracionFragment extends PreferenceFragmentCompat {
         if (mapTypePreference != null) {
             mapTypePreference.setOnPreferenceChangeListener((preference, newValue) -> {
                 // Actualiza el tipo de mapa en MainActivityViewModel
-                viewModel.setMapType(newValue.toString());
+                viewModel.setTipoDeMapa(newValue.toString());
 
                 // Navega a MapaFragment y elimina GalleryFragment del historial de navegación
-                NavController navController = Navigation.findNavController(requireView());
-                navController.navigate(R.id.action_nav_configuracion_to_nav_maps);
-                navController.popBackStack(); // Elimina GalleryFragment del historial de navegación
+                //NavController navController = Navigation.findNavController(requireView());
+                //navController.navigate(R.id.action_nav_configuracion_to_nav_mapa);
+                //navController.popBackStack(); // Elimina GalleryFragment del historial de navegación
 
                 return true;
             });
@@ -44,7 +42,7 @@ public class ConfiguracionFragment extends PreferenceFragmentCompat {
         if (languagePreference != null) {
             languagePreference.setOnPreferenceChangeListener((preference, newValue) -> {
                 // Actualiza el idioma en MainActivityViewModel
-                viewModel.setLanguage(newValue.toString());
+                viewModel.setMIdioma(newValue.toString());
 
                 // Cambia el idioma de la aplicación
                 Locale locale = new Locale(newValue.toString());

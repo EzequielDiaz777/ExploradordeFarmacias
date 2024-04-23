@@ -21,11 +21,12 @@
         android:id="@+id/nav_configuracion"
         android:name="com.ezediaz.exploradordefarmacias.ui.configuracion.ConfiguracionFragment"
         android:label="@string/configuracion"
-        tools:layout="@xml/preferences" >
+        tools:layout="@xml/preferences">
         <action
-            android:id="@+id/action_nav_configuracion_to_nav_maps"
+            android:id="@+id/action_nav_configuracion_to_nav_mapa"
             app:destination="@id/nav_mapa" />
     </fragment>
+
 
     <fragment
         android:id="@+id/nav_salir"
@@ -33,5 +34,4 @@
         android:label="@string/salir"
         tools:layout="@layout/fragment_salir" />
 
-    <!-- Define la acción de navegación desde GalleryFragment a MapaFragment -->
 </navigation>

@@ -9,4 +9,10 @@
     <string name="mapa">Maps</string>
     <string name="configuracion">Configuration</string>
     <string name="salir">Exit</string>
+    <string name="ver_mas">See more</string>
+    <string name="direccion">Pharmacy address: </string>
+    <string name="horario">Opening hours:</string>
+    <string name="volver">BACK</string>
+    <string name="idioma">Language</string>
+    <string name="tipo_de_mapa">Map type</string>
 </resources>

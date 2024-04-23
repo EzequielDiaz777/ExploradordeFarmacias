@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.lista.FarmaciaActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_baseline_add_24"
-        android:contentDescription="fab_desc" />
-
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
