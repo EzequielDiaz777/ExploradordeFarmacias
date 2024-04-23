@@ -3,34 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_home">
+    app:startDestination="@id/nav_lista">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.ezediaz.exploradordefarmacias.ui.home.HomeFragment"
-        android:label="Lista de farmacias"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_lista"
+        android:name="com.ezediaz.exploradordefarmacias.ui.lista.ListaFragment"
+        android:label="@string/lista_de_farmacias"
+        tools:layout="@layout/fragment_lista" />
 
     <fragment
-        android:id="@+id/nav_maps"
+        android:id="@+id/nav_mapa"
         android:name="com.ezediaz.exploradordefarmacias.ui.mapa.MapaFragment"
-        android:label="Mapa"
+        android:label="@string/mapa"
         tools:layout="@layout/fragment_mapa" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.ezediaz.exploradordefarmacias.ui.gallery.GalleryFragment"
-        android:label="Configuración"
-        tools:layout="@xml/preferences" />
+        android:id="@+id/nav_configuracion"
+        android:name="com.ezediaz.exploradordefarmacias.ui.configuracion.ConfiguracionFragment"
+        android:label="@string/configuracion"
+        tools:layout="@xml/preferences" >
+        <action
+            android:id="@+id/action_nav_configuracion_to_nav_maps"
+            app:destination="@id/nav_mapa" />
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.ezediaz.exploradordefarmacias.ui.slideshow.SlideshowFragment"
-        android:label="Salir"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_salir"
+        android:name="com.ezediaz.exploradordefarmacias.ui.salir.SalirFragment"
+        android:label="@string/salir"
+        tools:layout="@layout/fragment_salir" />
 
     <!-- Define la acción de navegación desde GalleryFragment a MapaFragment -->
-    <action
-        android:id="@+id/action_galleryFragment_to_mapaFragment"
-        app:destination="@id/nav_maps" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.ezediaz.exploradordefarmacias.ui.slideshow;
+package com.ezediaz.exploradordefarmacias.ui.salir;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.ezediaz.exploradordefarmacias.databinding.FragmentSlideshowBinding;
+import com.ezediaz.exploradordefarmacias.databinding.FragmentSalirBinding;
 
-public class SlideshowFragment extends Fragment {
+public class SalirFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private FragmentSalirBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentSalirBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        Dialogo.mostrarDialogo(getContext());
+        SalirDialogo.mostrarDialogo(getContext());
         return root;
     }
 

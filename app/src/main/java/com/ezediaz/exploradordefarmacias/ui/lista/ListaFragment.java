@@ -1,4 +1,4 @@
-package com.ezediaz.exploradordefarmacias.ui.home;
+package com.ezediaz.exploradordefarmacias.ui.lista;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,17 +17,17 @@ import com.ezediaz.exploradordefarmacias.modelo.Farmacia;
 
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class ListaFragment extends Fragment {
 
     private FragmentListaBinding binding;
-    private HomeFragmentViewModel vm;
+    private ListaFragmentViewModel vm;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentListaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         // Configurar ViewModel
-        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(HomeFragmentViewModel.class);
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ListaFragmentViewModel.class);
 
 
 

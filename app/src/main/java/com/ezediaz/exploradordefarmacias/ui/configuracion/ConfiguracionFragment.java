@@ -1,4 +1,4 @@
-package com.ezediaz.exploradordefarmacias.ui.gallery;
+package com.ezediaz.exploradordefarmacias.ui.configuracion;
 
 import android.os.Bundle;
 import android.content.res.Configuration;
@@ -13,7 +13,7 @@ import com.ezediaz.exploradordefarmacias.R;
 
 import java.util.Locale;
 
-public class GalleryFragment extends PreferenceFragmentCompat {
+public class ConfiguracionFragment extends PreferenceFragmentCompat {
 
     private MainActivityViewModel viewModel;
 
@@ -32,7 +32,7 @@ public class GalleryFragment extends PreferenceFragmentCompat {
 
                 // Navega a MapaFragment y elimina GalleryFragment del historial de navegación
                 NavController navController = Navigation.findNavController(requireView());
-                navController.navigate(R.id.action_galleryFragment_to_mapaFragment);
+                navController.navigate(R.id.action_nav_configuracion_to_nav_maps);
                 navController.popBackStack(); // Elimina GalleryFragment del historial de navegación
 
                 return true;

@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.home.FarmaciaActivity"
+            android:name=".ui.lista.FarmaciaActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.ExploradorDeFarmacias.NoActionBar" />

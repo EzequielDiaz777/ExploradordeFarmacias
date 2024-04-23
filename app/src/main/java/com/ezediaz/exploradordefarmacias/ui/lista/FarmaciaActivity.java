@@ -1,4 +1,4 @@
-package com.ezediaz.exploradordefarmacias.ui.home;
+package com.ezediaz.exploradordefarmacias.ui.lista;
 
 import android.os.Bundle;
 import android.util.Log;

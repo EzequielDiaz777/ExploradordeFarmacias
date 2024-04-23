@@ -1,14 +1,14 @@
-package com.ezediaz.exploradordefarmacias.ui.gallery;
+package com.ezediaz.exploradordefarmacias.ui.configuracion;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryFragmentViewModel extends ViewModel {
+public class ConfiguracionFragmentViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public GalleryFragmentViewModel() {
+    public ConfiguracionFragmentViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is slideshow fragment");
     }

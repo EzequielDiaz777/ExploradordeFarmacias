@@ -1,4 +1,4 @@
-package com.ezediaz.exploradordefarmacias.ui.home;
+package com.ezediaz.exploradordefarmacias.ui.lista;
 
 import android.app.Application;
 
@@ -13,9 +13,9 @@ import com.ezediaz.exploradordefarmacias.modelo.Farmacia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragmentViewModel extends AndroidViewModel {
+public class ListaFragmentViewModel extends AndroidViewModel {
     private MutableLiveData<List<Farmacia>> mutableLiveDataFarmacias;
-    public HomeFragmentViewModel(@NonNull Application application) {
+    public ListaFragmentViewModel(@NonNull Application application) {
         super(application);
     }
     public LiveData<List<Farmacia>> getMutableLiveDataFarmacias(){
