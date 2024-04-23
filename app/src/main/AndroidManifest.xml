@@ -31,7 +31,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDSo2bCGW0hPR58xDxvadMb3qnsrSwnrNY" />
+            android:value="AIzaSyABiH1KEq7J2IzRe_H2v4qnw7F_fS4pHZM" />
 
         <activity
             android:name=".MainActivity"
@@ -40,6 +40,7 @@
             android:theme="@style/Theme.ExploradorDeFarmacias.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

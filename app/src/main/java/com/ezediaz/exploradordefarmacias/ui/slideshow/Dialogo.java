@@ -8,7 +8,7 @@ public class Dialogo {
     public static void mostrarDialogo(Context context){
         new AlertDialog.Builder(context)
                 .setTitle("Confirmar salida")
-                .setMessage("¿Desea salir? Si o no")
+                .setMessage("¿Está seguro que desea salir?")
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

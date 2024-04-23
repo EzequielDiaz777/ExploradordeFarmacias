@@ -1,9 +1,9 @@
 <resources>
     <string-array name="map_type_entries">
         <item>Normal</item>
-        <item>Satélite</item>
-        <item>Terreno</item>
-        <item>Híbrido</item>
+        <item>Satellite</item>
+        <item>Terrain</item>
+        <item>Hybrid</item>
     </string-array>
     <string-array name="map_type_values">
         <item>normal</item>
@@ -13,8 +13,8 @@
     </string-array>
 
     <string-array name="language_entries">
-        <item>Español</item>
-        <item>Inglés</item>
+        <item>Spanish</item>
+        <item>English</item>
     </string-array>
     <string-array name="language_values">
         <item>es</item>

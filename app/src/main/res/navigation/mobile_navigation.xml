@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
@@ -12,19 +12,25 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/nav_maps"
+        android:name="com.ezediaz.exploradordefarmacias.ui.mapa.MapaFragment"
+        android:label="Mapa"
+        tools:layout="@layout/fragment_mapa" />
+
+    <fragment
         android:id="@+id/nav_gallery"
         android:name="com.ezediaz.exploradordefarmacias.ui.gallery.GalleryFragment"
         android:label="Configuración"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@xml/preferences" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.ezediaz.exploradordefarmacias.ui.slideshow.SlideshowFragment"
         android:label="Salir"
         tools:layout="@layout/fragment_slideshow" />
-    <fragment
-        android:id="@+id/nav_maps"
-        android:name="com.ezediaz.exploradordefarmacias.ui.mapa.MapsFragment"
-        android:label="Ubicación"
-        tools:layout="@layout/fragment_maps" />
+
+    <!-- Define la acción de navegación desde GalleryFragment a MapaFragment -->
+    <action
+        android:id="@+id/action_galleryFragment_to_mapaFragment"
+        app:destination="@id/nav_maps" />
 </navigation>

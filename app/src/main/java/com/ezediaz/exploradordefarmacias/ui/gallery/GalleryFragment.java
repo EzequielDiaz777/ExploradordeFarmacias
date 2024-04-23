@@ -1,55 +1,65 @@
 package com.ezediaz.exploradordefarmacias.ui.gallery;
-import androidx.annotation.Nullable;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
+import android.content.res.Configuration;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.preference.ListPreference;
-import com.ezediaz.exploradordefarmacias.R;
 import androidx.preference.PreferenceFragmentCompat;
+
+import com.ezediaz.exploradordefarmacias.MainActivityViewModel;
+import com.ezediaz.exploradordefarmacias.R;
 
 import java.util.Locale;
 
-
 public class GalleryFragment extends PreferenceFragmentCompat {
+
+    private MainActivityViewModel viewModel;
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
 
-        // Manejar cambios de preferencia, por ejemplo, el tipo de mapa
+        viewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
+
+        // Maneja cambios de preferencia para el tipo de mapa
         ListPreference mapTypePreference = findPreference("map_type");
-        mapTypePreference.setOnPreferenceChangeListener((preference, newValue) -> {
-            // Actualizar el tipo de mapa según el nuevo valor
-            actualizarTipoDeMapa(newValue.toString());
-            return true;
-        });
+        if (mapTypePreference != null) {
+            mapTypePreference.setOnPreferenceChangeListener((preference, newValue) -> {
+                // Actualiza el tipo de mapa en MainActivityViewModel
+                viewModel.setMapType(newValue.toString());
 
-        // Manejar cambios de preferencia, por ejemplo, el idioma
+                // Navega a MapaFragment y elimina GalleryFragment del historial de navegación
+                NavController navController = Navigation.findNavController(requireView());
+                navController.navigate(R.id.action_galleryFragment_to_mapaFragment);
+                navController.popBackStack(); // Elimina GalleryFragment del historial de navegación
+
+                return true;
+            });
+        }
+
+        // Maneja cambios de preferencia para el idioma
         ListPreference languagePreference = findPreference("language");
-        languagePreference.setOnPreferenceChangeListener((preference, newValue) -> {
-            // Actualizar el idioma de la aplicación según el nuevo valor
-            actualizarIdioma(newValue.toString());
-            return true;
-        });
+        if (languagePreference != null) {
+            languagePreference.setOnPreferenceChangeListener((preference, newValue) -> {
+                // Actualiza el idioma en MainActivityViewModel
+                viewModel.setLanguage(newValue.toString());
+
+                // Cambia el idioma de la aplicación
+                Locale locale = new Locale(newValue.toString());
+                Locale.setDefault(locale);
+
+                // Actualiza la configuración de la aplicación
+                Configuration config = new Configuration();
+                config.setLocale(locale);
+                getActivity().getResources().updateConfiguration(config, getActivity().getResources().getDisplayMetrics());
+
+                // Reinicia la actividad para aplicar los cambios de idioma
+                requireActivity().recreate();
+
+                return true;
+            });
+        }
     }
-
-    private void actualizarTipoDeMapa(String mapType) {
-        // Implementar la lógica para cambiar el tipo de mapa en la aplicación
-    }
-
-    private void actualizarIdioma(String language) {
-        // Crear un objeto Locale para el nuevo idioma
-        Locale locale = new Locale(language);
-        // Establecer el nuevo Locale como el predeterminado
-        Locale.setDefault(locale);
-
-        // Actualizar la configuración de la aplicación
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getActivity().getResources().updateConfiguration(config, getActivity().getResources().getDisplayMetrics());
-
-        // Opcional: puedes realizar acciones adicionales después de cambiar el idioma
-        // por ejemplo, reiniciar la actividad para aplicar los cambios inmediatamente.
-        getActivity().recreate(); // Esto reiniciará la actividad
-    }
-
 }
