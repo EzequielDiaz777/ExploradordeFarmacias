@@ -15,11 +15,9 @@ import java.util.Objects;
 
 public class SalirDialogo extends AndroidViewModel {
     private static MainActivityViewModel vm;
-
     public SalirDialogo(@NonNull Application application) {
         super(application);
     }
-
     public static void mostrarDialogo(Context context){
         vm = ViewModelProvider.AndroidViewModelFactory.getInstance((Application) context.getApplicationContext()).create(MainActivityViewModel.class);
         if(Objects.requireNonNull(vm.getMIdioma().getValue()).equalsIgnoreCase("es")){
@@ -52,7 +50,6 @@ public class SalirDialogo extends AndroidViewModel {
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
                         }
                     })
                     .show();

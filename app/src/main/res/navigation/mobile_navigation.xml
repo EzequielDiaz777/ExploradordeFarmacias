@@ -10,28 +10,19 @@
         android:name="com.ezediaz.exploradordefarmacias.ui.lista.ListaFragment"
         android:label="@string/lista_de_farmacias"
         tools:layout="@layout/fragment_lista" />
-
     <fragment
         android:id="@+id/nav_mapa"
         android:name="com.ezediaz.exploradordefarmacias.ui.mapa.MapaFragment"
         android:label="@string/mapa"
         tools:layout="@layout/fragment_mapa" />
-
     <fragment
         android:id="@+id/nav_configuracion"
         android:name="com.ezediaz.exploradordefarmacias.ui.configuracion.ConfiguracionFragment"
         android:label="@string/configuracion"
-        tools:layout="@xml/preferences">
-        <action
-            android:id="@+id/action_nav_configuracion_to_nav_mapa"
-            app:destination="@id/nav_mapa" />
-    </fragment>
-
-
+        tools:layout="@xml/preferences" />
     <fragment
         android:id="@+id/nav_salir"
         android:name="com.ezediaz.exploradordefarmacias.ui.salir.SalirFragment"
         android:label="@string/salir"
         tools:layout="@layout/fragment_salir" />
-
 </navigation>

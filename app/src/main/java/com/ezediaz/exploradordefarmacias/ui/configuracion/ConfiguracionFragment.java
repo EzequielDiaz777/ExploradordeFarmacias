@@ -1,61 +1,36 @@
 package com.ezediaz.exploradordefarmacias.ui.configuracion;
-
 import android.os.Bundle;
 import android.content.res.Configuration;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
-
 import com.ezediaz.exploradordefarmacias.MainActivityViewModel;
 import com.ezediaz.exploradordefarmacias.R;
-
 import java.util.Locale;
-
 public class ConfiguracionFragment extends PreferenceFragmentCompat {
-
-    private MainActivityViewModel viewModel;
-
+    private MainActivityViewModel vm;
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
+        vm = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
+        ListPreference mapTypePreference = findPreference("tipoDeMapa");
 
-        viewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
-
-        // Maneja cambios de preferencia para el tipo de mapa
-        ListPreference mapTypePreference = findPreference("map_type");
         if (mapTypePreference != null) {
             mapTypePreference.setOnPreferenceChangeListener((preference, newValue) -> {
-                // Actualiza el tipo de mapa en MainActivityViewModel
-                viewModel.setTipoDeMapa(newValue.toString());
-
-                // Navega a MapaFragment y elimina GalleryFragment del historial de navegación
-                //NavController navController = Navigation.findNavController(requireView());
-                //navController.navigate(R.id.action_nav_configuracion_to_nav_mapa);
-                //navController.popBackStack(); // Elimina GalleryFragment del historial de navegación
-
+                vm.setTipoDeMapa(newValue.toString());
                 return true;
             });
         }
-
-        // Maneja cambios de preferencia para el idioma
-        ListPreference languagePreference = findPreference("language");
+        ListPreference languagePreference = findPreference("idioma");
         if (languagePreference != null) {
             languagePreference.setOnPreferenceChangeListener((preference, newValue) -> {
-                // Actualiza el idioma en MainActivityViewModel
-                viewModel.setMIdioma(newValue.toString());
-
-                // Cambia el idioma de la aplicación
+                vm.setMIdioma(newValue.toString());
                 Locale locale = new Locale(newValue.toString());
                 Locale.setDefault(locale);
-
-                // Actualiza la configuración de la aplicación
                 Configuration config = new Configuration();
                 config.setLocale(locale);
                 getActivity().getResources().updateConfiguration(config, getActivity().getResources().getDisplayMetrics());
-
-                // Reinicia la actividad para aplicar los cambios de idioma
                 requireActivity().recreate();
-
                 return true;
             });
         }

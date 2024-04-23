@@ -6,7 +6,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="lista_de_farmacias">Pharmacy Explorer</string>
-    <string name="mapa">Maps</string>
+    <string name="mapa">Map</string>
     <string name="configuracion">Configuration</string>
     <string name="salir">Exit</string>
     <string name="ver_mas">See more</string>

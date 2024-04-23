@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!-- Preferencia para el tipo de mapa -->
     <ListPreference
-        android:key="map_type"
+        android:key="tipoDeMapa"
         android:title="@string/tipo_de_mapa"
-        android:entries="@array/map_type_entries"
-        android:entryValues="@array/map_type_values"
+        android:entries="@array/entrada_tipo_de_mapa"
+        android:entryValues="@array/valor_tipo_de_mapa"
         android:defaultValue="normal" />
-
-    <!-- Preferencia para el idioma -->
     <ListPreference
-        android:key="language"
+        android:key="idioma"
         android:title="@string/idioma"
-        android:entries="@array/language_entries"
-        android:entryValues="@array/language_values"
+        android:entries="@array/entrada_idioma"
+        android:entryValues="@array/valor_idioma"
         android:defaultValue="es" />
-
 </PreferenceScreen>
