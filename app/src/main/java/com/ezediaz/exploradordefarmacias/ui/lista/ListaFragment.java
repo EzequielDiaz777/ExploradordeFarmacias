@@ -26,26 +26,19 @@ public class ListaFragment extends Fragment {
         binding = FragmentListaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        // Configurar ViewModel
         vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(ListaFragmentViewModel.class);
 
-
-
-        // Observa cambios en los datos
-        vm.getMutableLiveDataFarmacias().observe(getViewLifecycleOwner(), new Observer<List<Farmacia>>() {
+        vm.getMFarmacias().observe(getViewLifecycleOwner(), new Observer<List<Farmacia>>() {
             @Override
             public void onChanged(List<Farmacia> farmacias) {
-                FarmaciaAdapter farmaciaAdapter = new FarmaciaAdapter(farmacias, container.getContext(),getLayoutInflater());
+                FarmaciaAdapter farmaciaAdapter = new FarmaciaAdapter(farmacias, getLayoutInflater());
                 GridLayoutManager glm = new GridLayoutManager(container.getContext(), 1, GridLayoutManager.VERTICAL, false);
                 RecyclerView rv = binding.listadoDeFarmacias;
                 rv.setLayoutManager(glm);
                 rv.setAdapter(farmaciaAdapter);
             }
         });
-
-        // Inicia la carga de datos
         vm.cargarFarmacias();
-
         return root;
     }
 

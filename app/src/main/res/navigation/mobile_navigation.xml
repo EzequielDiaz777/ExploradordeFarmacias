@@ -9,7 +9,16 @@
         android:id="@+id/nav_lista"
         android:name="com.ezediaz.exploradordefarmacias.ui.lista.ListaFragment"
         android:label="@string/lista_de_farmacias"
-        tools:layout="@layout/fragment_lista" />
+        tools:layout="@layout/fragment_lista" >
+        <action
+            android:id="@+id/action_nav_lista_to_farmacia"
+            app:destination="@id/farmacia" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmacia"
+        android:name="com.ezediaz.exploradordefarmacias.ui.lista.FarmaciaFragment"
+        android:label="@string/farmacia"
+        tools:layout="@layout/fragment_farmacia" />
     <fragment
         android:id="@+id/nav_mapa"
         android:name="com.ezediaz.exploradordefarmacias.ui.mapa.MapaFragment"

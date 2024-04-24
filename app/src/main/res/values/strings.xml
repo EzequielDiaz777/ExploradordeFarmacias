@@ -10,9 +10,10 @@
     <string name="configuracion">Configuración</string>
     <string name="salir">Salir</string>
     <string name="ver_mas">Ver más</string>
-    <string name="direccion">"Direccion de la farmacia: "</string>
-    <string name="horario">Horario de atención</string>
+    <string name="direccion">Direccion de la farmacia:</string>
+    <string name="horario">Horario de atención:</string>
     <string name="volver">Volver</string>
     <string name="idioma">Idioma</string>
     <string name="tipo_de_mapa">Tipo de mapa</string>
+    <string name="farmacia">Farmacia</string>
 </resources>

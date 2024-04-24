@@ -14,15 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListaFragmentViewModel extends AndroidViewModel {
-    private MutableLiveData<List<Farmacia>> mutableLiveDataFarmacias;
+    private MutableLiveData<List<Farmacia>> mFarmacias;
     public ListaFragmentViewModel(@NonNull Application application) {
         super(application);
     }
-    public LiveData<List<Farmacia>> getMutableLiveDataFarmacias(){
-        if(mutableLiveDataFarmacias == null){
-            mutableLiveDataFarmacias = new MutableLiveData<>();
+    public LiveData<List<Farmacia>> getMFarmacias(){
+        if(mFarmacias == null){
+            mFarmacias = new MutableLiveData<>();
         }
-        return mutableLiveDataFarmacias;
+        return mFarmacias;
     }
 
     public void cargarFarmacias(){
@@ -33,6 +33,6 @@ public class ListaFragmentViewModel extends AndroidViewModel {
         lista.add(new Farmacia("Farmacia Los Cerros","Los Puntanos 278", R.drawable.loscerros, "9 a 22"));
         lista.add(new Farmacia("Farmacia MacroFarma","Juan Pekol 400", R.drawable.macrofarma, "8 a 23"));
         lista.add(new Farmacia("Farmacia Muller", "Martin de Loyola Este 653", R.drawable.muller, "8:30 a 13 y 17 a 22"));
-        mutableLiveDataFarmacias.setValue(lista);
+        mFarmacias.setValue(lista);
     }
 }
